@@ -1,11 +1,11 @@
-import "./App.css";
-import Test from "./components/Text";
+import React from "react";
+import HomePage from "./components/Homepage/Homepage";
 
 const App = () => {
   return (
-    <div className="container">
-      <Test />
-    </div>
+    <React.Fragment>
+      <HomePage />
+    </React.Fragment>
   );
 };
 
