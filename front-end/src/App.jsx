@@ -1,5 +1,6 @@
 import React from "react";
-import HomePage from "./components/Homepage/Homepage";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/Homepage";
 
 const App = () => {
   return (
