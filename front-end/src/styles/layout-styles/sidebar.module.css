@@ -1,0 +1,37 @@
+@import "../main.css";
+
+.aside__left {
+  width: 250px;
+  height: 400px;
+  border-radius: 10px;
+  /* background-color: var(--white-color); */
+}
+
+h1 {
+  color: #fff;
+}
+
+.aside__left i {
+  display: inline-block;
+  color: var(--white-color);
+  margin: 0 12px;
+}
+
+.aside__left ul li {
+  margin: 15px auto;
+  border-radius: 10px;
+  padding: 15px;
+  width: 240px;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.aside__left ul li:hover {
+  font-weight: var(--roboto-500);
+  color: var(--black-color);
+  background-color: var(--white-color);
+}
+
+.aside__left ul li:hover > i {
+  color: var(--black-color);
+}

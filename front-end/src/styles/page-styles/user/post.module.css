@@ -1,0 +1,20 @@
+@import "../main.css";
+
+.user-post {
+  border: 1px solid var(--orage-color);
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--white-color);
+}
+
+.user-account {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-account__avatar {
+  width: 30px;
+  height: 30px;
+}

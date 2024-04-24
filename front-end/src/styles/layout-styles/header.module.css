@@ -1,0 +1,45 @@
+@import "../main.css";
+
+.header {
+  position: sticky;
+  padding: 10px;
+  border-bottom: 1px solid var(--white-color);
+  background-color: var(--black-color);
+}
+
+.header__logo {
+  position: relative;
+  right: 30px;
+  border: 1px solid var(--orange-color);
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: var(--roboto-700);
+  color: var(--white-color);
+  text-align: center;
+}
+
+.header__form .search-form {
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  width: 400px;
+  font-size: 1rem;
+}
+
+.header__btn {
+  position: relative;
+  left: 120px;
+}
+
+.btn-login {
+  margin: 0 10px;
+  border: 1px solid var(--orange-color);
+  padding: 15px;
+  width: 150px;
+  border-radius: 10px;
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: var(--roboto-700);
+  background-color: var(--white-color);
+  cursor: pointer;
+}
