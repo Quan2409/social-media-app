@@ -1,10 +1,10 @@
 import React from "react";
-import Homepage from "./pages/Homepage";
+import MainRouter from "./routers/mainRouter";
 
 const App = () => {
   return (
     <>
-      <Homepage />
+      <MainRouter />
     </>
   );
 };

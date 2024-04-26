@@ -1,0 +1,90 @@
+@import "../../style.css";
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--gray);
+}
+
+.login {
+  position: relative;
+  top: 100px;
+  margin: 0px auto;
+  border: 2px solid var(--yellow);
+  border-radius: 10px;
+  padding: 20px;
+  width: 800px;
+  background-color: #fff;
+}
+
+.login__content {
+  margin: 0 auto;
+  width: 430px;
+  text-align: center;
+}
+
+.login__content .title {
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+
+.login__content .quotes {
+  font-style: italic;
+}
+
+.login__form {
+  margin: 15px auto;
+  width: 400px;
+}
+
+.login__form input {
+  display: block;
+  margin: 20px auto;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  width: 320px;
+}
+
+.login__form input:focus {
+  border: 1px solid var(--yellow);
+}
+
+.login__buttons a {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  cursor: pointer;
+}
+
+.login__buttons a:hover {
+  color: var(--yellow);
+}
+
+.login__buttons .forgot-pas-link {
+  position: relative;
+  right: 35px;
+}
+
+.login__buttons .login-btn {
+  display: block;
+  margin: 15px auto;
+  border: 1px solid var(--yellow);
+  border-radius: 5px;
+  padding: 15px;
+  width: 320px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: var(--roboto-700);
+  background-color: var(--yellow);
+  cursor: pointer;
+}
+
+.login__buttons .login-btn:hover {
+  color: var(--yellow);
+  background-color: #fff;
+}
+
+.login__buttons .register-link {
+  margin-top: 30px;
+}

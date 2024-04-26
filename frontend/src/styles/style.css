@@ -2,6 +2,9 @@
 @import "../styles/base/reset.css";
 @import "../styles/helper/variables.css";
 
+/* import layout */
+@import "../styles/layout/grid.css";
+
 body {
   font-family: var(--roboto);
 }
