@@ -1,10 +1,11 @@
 import React from "react";
+import Homepage from "./pages/Homepage";
 
 const App = () => {
   return (
-    <div>
-      <h1>Cuisine Hub</h1>
-    </div>
+    <>
+      <Homepage />
+    </>
   );
 };
 

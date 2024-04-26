@@ -1,2 +1,7 @@
 /* import base */
 @import "../styles/base/reset.css";
+@import "../styles/helper/variables.css";
+
+body {
+  font-family: var(--roboto);
+}
