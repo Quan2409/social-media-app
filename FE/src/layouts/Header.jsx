@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import style from "../styles/layout-styles/header.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import style from "../styles/layout/header.module.css";
 
 const Header = () => {
   const navigate = useNavigate();

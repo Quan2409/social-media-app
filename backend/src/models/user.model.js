@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
 
-    profileUrl: {
+    avatar: {
       type: String,
     },
 

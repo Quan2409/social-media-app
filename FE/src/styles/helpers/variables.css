@@ -1,0 +1,15 @@
+@import "../base/typography.css";
+
+:root {
+  /* colors */
+  --black-color: #000;
+  --white-color: #fff;
+  --yellow-color: #ffd700;
+
+  /* fonts */
+  --roboto: "Roboto", sans-serif;
+  --roboto-300: 300;
+  --roboto-400: 400;
+  --roboto-500: 500;
+  --roboto-700: 700;
+}

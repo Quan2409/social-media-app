@@ -1,0 +1,46 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+body {
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  width: 100px;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}

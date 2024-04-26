@@ -1,11 +1,10 @@
 import React from "react";
-import style from "../styles/layout-styles/sidebar.module.css";
+import style from "../styles/layout/sidebar.module.css";
 import { NavLink } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 const Sidebar = () => {
   return (
     <aside>
-      <h1>Join Us</h1>
       <nav className={style["aside__left"]}>
         <ul>
           <NavLink to={"/"}>

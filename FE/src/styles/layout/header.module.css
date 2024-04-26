@@ -4,7 +4,7 @@
   position: sticky;
   padding: 10px;
   border-bottom: 1px solid var(--white-color);
-  background-color: var(--black-color);
+  background-color: var(--yellow-color);
 }
 
 .header__logo {
