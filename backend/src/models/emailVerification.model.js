@@ -1,19 +1,20 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const emailVerification = Schema({
+const emailVerification = new Schema({
   userId: {
     type: String,
   },
 
   token: {
-    String,
+    type: String,
   },
 
-  created_at: {
+  createdAt: {
     type: Date,
   },
 
-  expire_at: {
+  expireAt: {
     type: Date,
   },
 });

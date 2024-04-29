@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const requestSchema = Schema(
+const requestSchema = new Schema(
   {
     requestTo: {
       type: Schema.Types.ObjectID,

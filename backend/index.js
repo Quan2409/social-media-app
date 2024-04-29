@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 // security packages
 const helmet = require("helmet");
 const databaseConnection = require("./src/config/database.js");
+const errorMiddleware = require("./src/middlewares/error.middleware.js");
+const indexRouter = require("./src/routes/index.routes.js");
 
 // config dotenv
 dotenv.config();
@@ -26,6 +28,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
+
+// routes
+app.use(indexRouter);
+app.use(errorMiddleware);
 
 //catch 404 and forward to error handler
 app.use(function (req, res, next) {
