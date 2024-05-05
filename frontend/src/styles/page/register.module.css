@@ -1,0 +1,59 @@
+@import "../index.css";
+
+.register {
+  position: relative;
+  top: 150px;
+  margin: 0 auto;
+  border: 2px solid var(--yellow);
+  border-radius: 5px;
+  padding: 15px;
+  width: 700px;
+  background-color: var(--white);
+}
+
+.register-content {
+  text-align: center;
+}
+
+.register-content .content-title {
+  margin: 10px 0;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.register-content .content-quote {
+  color: var(--yellow);
+  font-weight: var(--roboto-700);
+}
+
+.register-form {
+  margin-top: 20px;
+}
+
+.register-form input,
+.register-form button {
+  display: block;
+  margin: 15px auto;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  padding: 15px;
+  width: 350px;
+}
+
+.register-form input:focus {
+  border: 1px solid var(--yellow);
+}
+
+.register-form .form-btn {
+  border: 1px solid var(--yellow);
+  color: var(--white);
+  background-color: var(--yellow);
+  text-transform: uppercase;
+  font-weight: var(--roboto-700);
+  cursor: pointer;
+}
+
+.register-form .form-btn:hover {
+  background-color: var(--white);
+  color: var(--yellow);
+}
