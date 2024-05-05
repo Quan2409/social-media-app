@@ -2,6 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import style from "../styles/page/homepage.module.css";
+import Profile from "../pages/Profile";
+import CreatePost from "../components/CreatePost";
+import FriendRequest from "../components/FriendRequest";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -50,18 +53,13 @@ const Homepage = () => {
           <div className={style["row"]}>
             <div className={style["col-xl-4"]}>
               <div className="main__user">
-                <div className="user-profile">
-                  <h1>User Profile</h1>
-                </div>
-                <div className="user-friend">
-                  <h1>List Friend</h1>
-                </div>
+                <Profile />
               </div>
             </div>
             <div className={style["col-xl-4"]}>
               <div className="main__post">
                 <div className="create-post">
-                  <h1>Create Post</h1>
+                  <CreatePost />
                 </div>
                 <div className="post">
                   <h1>User Post</h1>
@@ -69,13 +67,8 @@ const Homepage = () => {
               </div>
             </div>
             <div className={style["col-xl-4"]}>
-              <div className="main__friend">
-                <div className="request">
-                  <h1>Friend Request</h1>
-                </div>
-                <div className="suggest">
-                  <h1>Suggest Friend</h1>
-                </div>
+              <div className={style["main__friend"]}>
+                <FriendRequest />
               </div>
             </div>
           </div>

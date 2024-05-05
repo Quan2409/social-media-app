@@ -64,3 +64,13 @@
   color: var(--yellow);
   background-color: var(--white);
 }
+
+/* main */
+.main {
+  margin-top: 20px;
+}
+
+.main__friend {
+  position: relative;
+  left: 70px;
+}

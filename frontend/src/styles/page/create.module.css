@@ -1,0 +1,21 @@
+.create-post {
+  position: relative;
+  right: 40px;
+  border: 2px solid var(--yellow);
+  border-radius: 5px;
+  padding: 10px;
+  width: 450px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.form input {
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  padding: 10px;
+  width: 350px;
+}
