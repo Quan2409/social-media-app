@@ -1,8 +1,14 @@
 const Users = require("../models/user.model.js");
 const Verification = require("../models/emailVerification.model");
 const FriendRequest = require("../models/friendRequest.js");
+const ResetPassword = require("../models/resetPassword.model.js");
 const yup = require("yup");
+const path = require("path");
 const { compareToken, createJWT } = require("../utils/handleToken.js");
+const {
+  hashPassword,
+  resetPasswordLink,
+} = require("../utils/handlePassword.js");
 
 //validation
 const userSchema = yup.object().shape({
@@ -27,7 +33,6 @@ const verifyEmail = async (req, res) => {
 
     const { expireAt, token: hashToken } = verificationRecord;
 
-    //check token is expired or not
     if (expireAt < Date.now()) {
       await Verification.findOneAndDelete({ userId });
       await Users.findOneAndDelete({ _id: userId });
@@ -35,26 +40,106 @@ const verifyEmail = async (req, res) => {
       res.redirect(`/user/verify?status=error&message=${message}`);
     }
 
-    //if token valid => compare => verify
     const isMatch = await compareToken(token, hashToken);
     if (isMatch) {
       await Users.findOneAndUpdate({ _id: userId }, { verified: true });
       await Verification.findOneAndUpdate({ userId });
       const message = "Email Verified Success";
-      // res.redirect(`/user/verified?status=success&message=${message}`);
-      return res.send(message);
+      res.redirect(`/user/verified?status=success&message=${message}`);
     } else {
       const message = "Verification failed or link is invalid";
-      // res.redirect(`/user/verified?status=error&message=${message}`);
-      return res.send(message);
+      res.redirect(`/user/verified?status=error&message=${message}`);
     }
   } catch (err) {
     const message = "An error occurred during email verification";
-    // return res.redirect(`/user/verified?status=error&message=${message}`);
-    return res.send(message);
+    return res.redirect(`/user/verified?status=error&message=${message}`);
   }
 };
 
+const verifiedEmail = (req, res) => {
+  const filePath = path.join(__dirname, "..", "views/build", "verified.html");
+  res.sendFile(filePath);
+};
+
+//reset password
+const requestToReset = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const userRecord = await Users.findOne({ email });
+    if (!userRecord) {
+      return res.status(404).json({
+        status: "Failed",
+        message: "Email address not found",
+      });
+    } else {
+      await resetPasswordLink(userRecord, res);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: err.message });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  const { userId, token } = req.params;
+  try {
+    const userRecord = await Users.findById(userId);
+    if (!userRecord) {
+      const message = "Invalid reset password link";
+      res.redirect(`/users/new-password-form?&status=error&message=${message}`);
+    }
+
+    const resetPasswordRecord = await ResetPassword.findOne({ userId });
+    if (!resetPasswordRecord) {
+      const message = "invalid reset password link";
+      res.redirect(`/user/new-password-form?status=error&message=${message}`);
+    }
+
+    const { expiresAt, token: resetToken } = resetPasswordRecord;
+    if (expiresAt < Date.now()) {
+      const message = "Reset password Link has expired";
+      res.redirect(`/user/new-password-form?status=error&message=${message}`);
+    }
+
+    const isMatch = await compareToken(token, resetToken);
+    if (isMatch) {
+      res.redirect(`/user/new-password-form?type=reset&id=${userId}`);
+    } else {
+      const message = "Invalid reset password link";
+      res.redirect(`/user/new-password-form?status=error&message=${message}`);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+};
+
+const newPasswordForm = (req, res) => {
+  const filePath = path.join(__dirname, "..", "views/build", "reset.html");
+  res.sendFile(filePath);
+};
+
+const changePassword = async (req, res) => {
+  try {
+    const { userId, password } = req.body;
+    const hashedPassword = await hashPassword(password);
+    const user = await Users.findByIdAndUpdate(
+      { _id: userId },
+      { password: hashedPassword }
+    );
+    if (user) {
+      await ResetPassword.findOneAndDelete({ userId });
+      res.status(200).json({
+        ok: true,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(404).json({ message: err.message });
+  }
+};
+
+//user
 const getUser = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -202,6 +287,11 @@ const getFriendRequest = async (req, res) => {
 
 module.exports = {
   verifyEmail,
+  verifiedEmail,
+  requestToReset,
+  resetPassword,
+  changePassword,
+  newPasswordForm,
   getUser,
   updateUser,
   friendRequest,

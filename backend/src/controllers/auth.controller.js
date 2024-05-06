@@ -1,6 +1,6 @@
 const Users = require("../models/user.model.js");
 const yup = require("yup");
-const sendVerificationEmail = require("../utils/handleEmail.js");
+const { sendVerificationEmail } = require("../utils/handleEmail.js");
 const { hashPassword } = require("../utils/handlePassword.js");
 const { comparePassword } = require("../utils/handlePassword.js");
 const { createJWT } = require("../utils/handleToken.js");

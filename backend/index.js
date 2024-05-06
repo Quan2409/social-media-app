@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 // security packages
 const helmet = require("helmet");
@@ -19,6 +20,9 @@ const port = process.env.PORT || 4000;
 
 // connect mongodb
 databaseConnection();
+
+// config static
+app.use(express.static(path.join(__dirname, "src", "views")));
 
 //app.use()
 app.use(morgan("dev"));
@@ -46,7 +50,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+  console.log(`server is running on port: ${port}`);
 });
 
 module.exports = app;
