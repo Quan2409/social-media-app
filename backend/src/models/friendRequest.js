@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const requestSchema = new Schema(
   {
-    requestTo: {
+    receiver: {
       type: Schema.Types.ObjectID,
       ref: "Users",
     },

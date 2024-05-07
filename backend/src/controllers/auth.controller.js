@@ -1,29 +1,12 @@
 const Users = require("../models/user.model.js");
-const yup = require("yup");
 const { sendVerificationEmail } = require("../utils/handleEmail.js");
 const { hashPassword } = require("../utils/handlePassword.js");
 const { comparePassword } = require("../utils/handlePassword.js");
 const { createJWT } = require("../utils/handleToken.js");
 
-//validation schema
-const registerSchema = yup.object().shape({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required("Last Name is required"),
-  email: yup.string().email().required("Email is required"),
-  password: yup.string().min(6).required(),
-});
-
-const loginSchema = yup.object().shape({
-  email: yup.string().email().required("Email is required"),
-  password: yup.string().min(6).required(),
-});
-
 //handle register
 const handleRegister = async (req, res, next) => {
   try {
-    //check validate
-    await registerSchema.validate(req.body);
-
     //request data
     const { firstName, lastName, email, password } = req.body;
 
@@ -60,9 +43,6 @@ const handleRegister = async (req, res, next) => {
 //handle login
 const handleLogin = async (req, res, next) => {
   try {
-    //check validate
-    await loginSchema.validate(req.body);
-
     // user data
     const { email, password } = req.body;
 

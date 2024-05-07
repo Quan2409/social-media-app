@@ -1,35 +1,39 @@
 const express = require("express");
 const router = express.Router();
 const {
-  verifyEmail,
-  verifiedEmail,
-  requestToReset,
-  resetPassword,
-  changePassword,
-  newPasswordForm,
-  getUser,
-  updateUser,
+  emailRequest,
+  resetPasswordRequest,
+  userRequest,
   friendRequest,
-  getFriendRequest,
 } = require("../controllers/user.controller");
-const userAuth = require("../middlewares/auth.middleware");
+const authMiddleware = require("../middlewares/auth.middleware");
 
 //verify email
-router.get("/verify/:userId/:token", verifyEmail);
-router.get("/verified", verifiedEmail);
+router.get("/verify/:userId/:token", emailRequest.verifyEmail);
+router.get("/verified", emailRequest.verifiedEmail);
 
 //reset password
-router.post("/request-to-reset", requestToReset);
-router.get("/reset-password/:userId/:token", resetPassword);
-router.post("/change-password", changePassword);
-router.get("/new-password-form", newPasswordForm);
+router.post("/request-to-reset", resetPasswordRequest.sendRequest);
+router.get(
+  "/reset-password/:userId/:token",
+  resetPasswordRequest.handleResetPasswordLink
+);
+router.post("/change-password", resetPasswordRequest.changePassword);
+router.get("/new-password-form", resetPasswordRequest.resetForm);
 
-router.post("/get-user/:id?", userAuth, getUser);
-router.put("/update-user", userAuth, updateUser);
+//user request
+router.post("/get-user/:id?", authMiddleware, userRequest.getUserById);
+router.put("/update-user", authMiddleware, userRequest.updateUser);
+router.post("/profile-view", authMiddleware, userRequest.profileViews);
+router.post("/suggested-friend", authMiddleware, userRequest.suggestFriend);
 
-//friend-request
-router.post("/friend-request", userAuth, friendRequest);
-router.post("/get-friend-request", userAuth, getFriendRequest);
-// router.post("/accept-request", userAuth, acceptRequest);
+//friend request
+router.post("/friend-request", authMiddleware, friendRequest.sendFriendRequest);
+router.post(
+  "/get-friend-request",
+  authMiddleware,
+  friendRequest.getFriendRequest
+);
+router.post("/accept-request", authMiddleware, friendRequest.acceptRequest);
 
 module.exports = router;
