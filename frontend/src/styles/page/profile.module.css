@@ -10,6 +10,7 @@
   align-items: center;
   column-gap: 15px;
   border-bottom: 1px solid var(--yellow);
+  padding: 5px 0;
 }
 
 .profile .username {
@@ -36,4 +37,9 @@
 .profile .edit-btn:hover {
   background-color: var(--white);
   color: var(--yellow);
+}
+
+.information span {
+  display: block;
+  margin: 10px 0;
 }

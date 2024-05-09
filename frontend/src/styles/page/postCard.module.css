@@ -1,0 +1,100 @@
+@import "../index.css";
+
+.wrapper {
+  position: relative;
+  right: 50px;
+  margin: 15px 0;
+  padding: 10px;
+  border: 2px solid var(--yellow);
+  border-radius: 5px;
+  width: 500px;
+}
+
+.user-information {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin: 10px 0;
+}
+
+.post-title {
+  margin: 10px 0;
+}
+
+.show-less,
+.show-more {
+  font-weight: var(--roboto-700);
+}
+
+.post-image {
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+.btn-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.btn-actions button {
+  margin: 15px 0;
+  border: 1px solid var(--yellow);
+  padding: 10px;
+  width: 190px;
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+.comment-box {
+  /* background-color: brown; */
+}
+
+.comment-ip {
+  padding: 10px;
+  border: 1px solid var(--yellow);
+  width: 370px;
+}
+
+.comment-form button {
+  padding: 10px;
+  color: var(--white);
+  border: 1px solid var(--yellow);
+  background-color: var(--yellow);
+}
+
+.comment-form .error {
+  color: red;
+}
+
+.comment-list {
+  margin-top: 20px;
+  border-top: 1px solid var(--yellow);
+}
+
+.item-infor {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin: 10px 0;
+}
+
+.reply-text:hover {
+  color: var(--yellow);
+}
+
+.show-reply {
+  position: relative;
+  left: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.reply-card .inside {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin: 10px 0;
+}

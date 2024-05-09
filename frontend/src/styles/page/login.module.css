@@ -46,7 +46,7 @@
 
 .login-form a {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
   width: 350px;
   text-align: right;
 }
@@ -67,4 +67,9 @@
 .login-form .form-btn:hover {
   background-color: var(--white);
   color: var(--yellow);
+}
+
+.error {
+  text-align: center;
+  color: red;
 }

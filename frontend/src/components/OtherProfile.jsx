@@ -1,35 +1,21 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
-import { BsMoon, BsSunFill } from "react-icons/bs";
-import style from "../styles/page/homepage.module.css";
-import Profile from "../pages/Profile";
+import noProfile from "../assets/images/user-profile.svg";
+import style from "../styles/page/02homepage.module.css";
+import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { posts } from "../assets/data";
 import PostCard from "../components/PostCard";
-import CreatePost from "../components/CreatePost";
-import FriendRequest from "../components/FriendRequest";
-import { setTheme } from "../redux/slice/themeSlice";
-import { setLogout } from "../redux/slice/userSlice";
 import FriendCard from "../components/FriendCard";
-import { friends, suggest, requests, posts } from "../assets/data";
 
-const Homepage = () => {
-  const navigate = useNavigate();
+const OtherProfile = () => {
+  const { theme } = useSelector((state) => state.theme);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const { theme } = useSelector((state) => state.theme);
-  const { user, edit } = useSelector((state) => state.user);
-  const [friendRequest, setFriendRequest] = useState(friends);
-  const [suggestFriend, setSuggestFriend] = useState(friends);
-
-  // console.log(theme);
-  // console.log(user);
-
-  const handleSearch = async (data) => {};
-
-  const handleTheme = () => {
-    const themeValue = theme === "light" ? "dark" : "light";
-    dispatch(setTheme(themeValue));
-  };
+  const { id } = useParams();
+  const { userInfo, setUserInfo } = useState(user);
+  const { post } = useSelector((state) => state.post);
 
   return (
     <>
@@ -90,14 +76,62 @@ const Homepage = () => {
             <div className={style["row"]}>
               <div className={style["col-xl-4"]}>
                 <div className="main__user">
-                  <Profile user={user} />
-                  <FriendCard friends={user?.friends} />
+                  <div className={style["user-profile"]}>
+                    <div className={style["profile"]}>
+                      <figure>
+                        <Link to={"/profile/" + user?._id}>
+                          <img
+                            src={userInfo?.avatar ?? noProfile}
+                            alt={userInfo?.email}
+                            className={style["profile-avatar"]}
+                            width={50}
+                            height={50}
+                          />
+                        </Link>
+                      </figure>
+                      <div>
+                        <p className={style["username"]}>
+                          {user?.firstName ?? "No Name"} {user?.lastName}
+                        </p>
+                        <p className={style["profession"]}>
+                          {user?.profession ?? "No Profession"}
+                        </p>
+                      </div>
+
+                      {/* {user?._id === data?._id ? (
+                        <>
+                          <button
+                            className={style["edit-btn"]}
+                            onClick={() => dispatch(setUpdateProfile(true))}
+                          >
+                            Edit
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          className={style["edit-btn"]}
+                          onClick={() => {}}
+                        >
+                          Add
+                        </button>
+                      )} */}
+                    </div>
+                    <div className={style["information"]}>
+                      <span className={style["profile-location"]}>
+                        {user?.location ?? "Add Location"}
+                      </span>
+                      <span className={style["profile-profession"]}>
+                        {user?.profession ?? "Add Profession"}
+                      </span>
+                      <span className={style["join-time"]}>
+                        <b>Joined at</b>: {moment(user?.createdAt).fromNow()}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className={style["col-xl-4"]}>
                 <div className="main__post">
-                  <CreatePost user={user} />
-
                   {/* posts */}
                   {posts.length > 0 ? (
                     posts?.map((post) => (
@@ -116,10 +150,7 @@ const Homepage = () => {
               </div>
               <div className={style["col-xl-4"]}>
                 <div className={style["main__friend"]}>
-                  <FriendRequest
-                    friendRequest={friendRequest}
-                    suggestFriend={suggestFriend}
-                  />
+                  <FriendCard friends={userInfo?.friends} />
                 </div>
               </div>
             </div>
@@ -130,4 +161,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default OtherProfile;

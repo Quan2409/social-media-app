@@ -2,7 +2,7 @@
 
 .register {
   position: relative;
-  top: 150px;
+  top: 100px;
   margin: 0 auto;
   border: 2px solid var(--yellow);
   border-radius: 5px;
@@ -56,4 +56,18 @@
 .register-form .form-btn:hover {
   background-color: var(--white);
   color: var(--yellow);
+}
+
+.register a {
+  display: block;
+  text-align: center;
+}
+
+.register a:hover {
+  color: var(--yellow);
+}
+
+.error {
+  text-align: center;
+  color: red;
 }

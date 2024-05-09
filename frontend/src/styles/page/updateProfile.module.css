@@ -1,27 +1,3 @@
-@import "../index.css";
-
-.create-post {
-  position: relative;
-  right: 50px;
-  padding: 10px;
-  border: 2px solid var(--yellow);
-  border-radius: 5px;
-  width: 500px;
-}
-
-.form {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-}
-
-.form input {
-  border: 1px solid var(--black);
-  border-radius: 5px;
-  padding: 10px;
-  width: 350px;
-}
-
 .modal {
   margin: 150px auto;
   border: 2px solid var(--yellow);
@@ -31,32 +7,20 @@
   background-color: var(--white);
 }
 
-.modal-form .modal-title {
-  margin-bottom: 10px;
-  color: var(--yellow);
-  text-align: center;
-}
-
-.modal-form input,
-.modal-form textarea {
+.modal input {
   display: block;
   margin: 10px auto;
   padding: 10px;
   width: 300px;
 }
 
-.modal-form textarea {
-  width: 400px;
-  height: 150px;
-  outline: none;
-  font-family: var(--roboto);
+.modal h1 {
+  margin-bottom: 10px;
+  color: var(--yellow);
+  text-align: center;
 }
 
-.modal-form .btn-actions {
-  margin-top: 30px;
-}
-
-.modal-form .btn-actions button {
+.modal .btn-actions button {
   display: block;
   margin: 5px auto;
   border-radius: 5px;
@@ -66,29 +30,24 @@
   font-weight: var(--roboto-700);
 }
 
-.error {
-  text-align: center;
-  color: red;
-}
-
-.modal-form .btn-actions .post-btn {
+.modal .btn-actions .update-btn {
   border: 1px solid var(--yellow);
   background-color: var(--yellow);
   color: var(--white);
 }
 
-.modal-form .btn-actions .post-btn:hover {
+.modal .btn-actions .update-btn:hover {
   background-color: var(--white);
   color: var(--yellow);
 }
 
-.modal-form .btn-actions .close-btn {
+.modal .btn-actions .close-btn {
   border: 1px solid red;
   background-color: red;
   color: var(--white);
 }
 
-.modal-form .btn-actions .close-btn:hover {
+.modal .btn-actions .close-btn:hover {
   color: red;
   background-color: var(--white);
 }
