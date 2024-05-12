@@ -1,0 +1,32 @@
+@import "../index.css";
+
+.friend-suggest {
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--white);
+}
+
+.friend-suggest__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--black);
+  padding: 10px;
+}
+
+.friend-suggest__wrapper {
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
+}
+
+.friend-suggest__actions button {
+  margin-top: 7px;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  padding: 7px;
+  width: 70px;
+  cursor: pointer;
+  background-color: var(--white);
+}

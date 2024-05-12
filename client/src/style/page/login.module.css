@@ -1,0 +1,50 @@
+@import "../index.css";
+
+.login {
+  margin: 200px auto;
+  border: 2px solid var(--white);
+  border-radius: 5px;
+  padding: 15px;
+  width: 700px;
+  background-color: var(--white);
+}
+
+.login__content {
+  margin-bottom: 20px;
+}
+
+.login__content h1,
+.login__content p {
+  text-align: center;
+}
+
+.login-form input,
+.login-form button {
+  display: block;
+  margin: 12px auto;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  padding: 10px;
+  width: 400px;
+}
+
+.login-form button {
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.login-actions {
+  margin-top: 20px;
+}
+
+.login-actions a {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  text-align: center;
+}
+
+.login-actions a:hover {
+  text-decoration: underline;
+}

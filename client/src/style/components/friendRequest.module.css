@@ -1,0 +1,37 @@
+@import "../index.css";
+
+.friend-request {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--white);
+}
+
+.friend-request__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--black);
+  padding: 10px;
+}
+
+.friend-request__actions {
+  margin: 7px 0;
+}
+
+.friend-request__actions button {
+  margin: 0 6px;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.friend-request__actions--accept {
+  color: var(--white);
+  border: 1px solid green;
+  background-color: green;
+}
+
+.friend-request__actions--decline {
+  color: var(--white);
+  border: 1px solid red;
+  background-color: red;
+}
