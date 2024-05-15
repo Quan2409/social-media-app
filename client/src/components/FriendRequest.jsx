@@ -1,8 +1,7 @@
 import React from "react";
 import style from "../style/components/friendRequest.module.css";
-import cardStyle from "../style/components/user.module.css";
 import { Link } from "react-router-dom";
-import Avatar from "../assets/avata.png";
+import Avatar from "../assets/avatar.png";
 
 const FriendRequest = () => {
   return (
@@ -12,17 +11,13 @@ const FriendRequest = () => {
         <span>0</span>
       </div>
 
-      <div className={cardStyle["profile-info"]}>
-        <Link to="">
-          <img
-            src={Avatar}
-            alt=""
-            className={cardStyle["profile-info__avatar"]}
-          />
+      <div className={style["profile-info"]}>
+        <Link to="profile/:id">
+          <img src={Avatar} alt="" className={style["profile-info__avatar"]} />
         </Link>
         <div>
-          <p className={cardStyle["profile-info__name"]}>Your Name</p>
-          <p className={cardStyle["profile-info__profession"]}>Profession</p>
+          <p className={style["profile-info__name"]}>Your Name</p>
+          <p className={style["profile-info__profession"]}>Profession</p>
         </div>
       </div>
 
@@ -30,6 +25,7 @@ const FriendRequest = () => {
         <button className={style["friend-request__actions--accept"]}>
           Accept
         </button>
+
         <button className={style["friend-request__actions--decline"]}>
           Decline
         </button>

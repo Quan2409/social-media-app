@@ -3,28 +3,57 @@
 .profile-card {
   padding: 12px;
   background-color: var(--white);
-  border-radius: 10px;
-  /* width: 330px; */
+  border-radius: 5px;
   position: relative;
 }
 
-.profile-info__location,
-.profile-info__profession {
+.profile-info {
   display: flex;
   column-gap: 10px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--black);
+}
+
+.profile-info__avatar {
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+.profile-info__name {
+  font-size: 1.3rem;
+  font-weight: var(--roboto-700);
+}
+
+.edit-ic {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  font-size: 1.7rem;
+}
+
+.detail-info {
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 10px;
+}
+
+.detail-info__location,
+.detail-info__profession {
+  display: flex;
+  column-gap: 7px;
   align-items: center;
   margin-top: 10px;
 }
 
 .other-information {
   margin-top: 15px;
-  border-top: 1px solid var(--black);
-  border-bottom: 1px solid var(--black);
-  padding: 10px;
 }
 
-.other-information .viewer,
-.other-information .joined {
+.other-information__joined,
+.other-information__viewer {
   display: flex;
   justify-content: space-between;
   margin: 10px 0;

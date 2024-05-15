@@ -5,7 +5,7 @@ const commentSchema = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "Users",
+      ref: "User",
     },
 
     postId: {
@@ -33,7 +33,7 @@ const commentSchema = new Schema(
       {
         replyId: { type: mongoose.Schema.Types.ObjectId },
 
-        userId: { type: Schema.Types.ObjectId, ref: "Users" },
+        userId: { type: Schema.Types.ObjectId, ref: "User" },
 
         from: { type: String },
 

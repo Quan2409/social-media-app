@@ -24,7 +24,7 @@ const handleSubmit = async (e) => {
     return;
   }
 
-  const apiUrl = `http://localhost:3005/user/change-password`;
+  const apiUrl = `http://localhost:4000/user/change-password`;
 
   try {
     const response = await fetch(apiUrl, {

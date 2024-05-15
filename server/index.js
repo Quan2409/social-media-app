@@ -5,9 +5,9 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
 const helmet = require("helmet");
-const databaseConnection = require("./src/config/database-config.js");
-const errorMiddleware = require("./src/middlewares/error-middleware.js");
-const indexRouter = require("./src/routes/index-routes.js");
+const databaseConnection = require("./src/configs/database.config.js");
+const errorMiddleware = require("./src/middlewares/error.middleware.js");
+const indexRouter = require("./src/routes/index.route.js");
 
 //app
 const app = express();

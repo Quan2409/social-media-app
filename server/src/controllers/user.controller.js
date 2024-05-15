@@ -1,6 +1,6 @@
-const Users = require("../models/user.model.js");
-const Verification = require("../models/emailVerification.model");
-const FriendRequest = require("../models/friendRequest.js");
+const User = require("../models/user.model.js");
+const Verification = require("../models/emailVerification.model.js");
+const FriendRequest = require("../models/friendRequest.model.js");
 const ResetPassword = require("../models/resetPassword.model.js");
 const path = require("path");
 const { compareToken, createJWT } = require("../utils/handleToken.js");
@@ -25,14 +25,14 @@ const emailController = {
 
       if (expireAt < Date.now()) {
         await Verification.findOneAndDelete({ userId });
-        await Users.findOneAndDelete({ _id: userId });
+        await User.findOneAndDelete({ _id: userId });
         const message = "Verification Token has expired";
         res.redirect(`/user/verify?status=error&message=${message}`);
       }
 
       const isMatch = await compareToken(token, hashToken);
       if (isMatch) {
-        await Users.findOneAndUpdate({ _id: userId }, { verified: true });
+        await User.findOneAndUpdate({ _id: userId }, { verified: true });
         await Verification.findOneAndUpdate({ userId });
         const message = "Email Verified Success";
         res.redirect(`/user/verified?status=success&message=${message}`);
@@ -57,7 +57,7 @@ const passwordController = {
   sendRequest: async (req, res) => {
     try {
       const { email } = req.body;
-      const userRecord = await Users.findOne({ email });
+      const userRecord = await User.findOne({ email });
       if (!userRecord) {
         return res.status(404).json({
           status: "Failed",
@@ -75,11 +75,11 @@ const passwordController = {
   handleResetPasswordLink: async (req, res) => {
     const { userId, token } = req.params;
     try {
-      const userRecord = await Users.findById(userId);
+      const userRecord = await User.findById(userId);
       if (!userRecord) {
         const message = "Invalid reset password link";
         res.redirect(
-          `/users/new-password-form?&status=error&message=${message}`
+          `/User/new-password-form?&status=error&message=${message}`
         );
       }
 
@@ -117,7 +117,7 @@ const passwordController = {
     try {
       const { userId, password } = req.body;
       const hashedPassword = await hashPassword(password);
-      const user = await Users.findByIdAndUpdate(
+      const user = await User.findByIdAndUpdate(
         { _id: userId },
         { password: hashedPassword }
       );
@@ -141,7 +141,7 @@ const userController = {
       const { id } = req.params;
       const { userId } = req.body.user;
 
-      const userRecord = await Users.findById(id ?? userId).populate({
+      const userRecord = await User.findById(id ?? userId).populate({
         path: "friends",
         select: "-password",
       });
@@ -191,7 +191,7 @@ const userController = {
         _id: userId,
       };
 
-      const user = await Users.findByIdAndUpdate(userId, updateUser, {
+      const user = await User.findByIdAndUpdate(userId, updateUser, {
         new: true,
       }).populate({ path: "friends", select: "-password" });
 
@@ -216,7 +216,7 @@ const userController = {
       const { userId } = req.body.user;
       const { id } = req.body;
 
-      const userRecord = await Users.findById(id);
+      const userRecord = await User.findById(id);
       userRecord.views.push(userId);
       await userRecord.save();
       res.status(201).json({
@@ -327,11 +327,11 @@ const friendController = {
       );
 
       if (status === "Accepted") {
-        const userRecord = await Users.findById(id);
+        const userRecord = await User.findById(id);
         userRecord.friends.push(newRequest?.requestFrom);
         await userRecord.save();
 
-        const friend = await Users.findById(newRequest?.requestFrom);
+        const friend = await User.findById(newRequest?.requestFrom);
         friend.friends.push(newRequest?.receiver);
         await friend.save();
       }
@@ -353,7 +353,7 @@ const friendController = {
         friends: { $nin: userId },
       };
 
-      const suggestFriends = await Users.find(queryObject)
+      const suggestFriends = await User.find(queryObject)
         .limit(15)
         .select("firstName lastName avatar profession -password");
 

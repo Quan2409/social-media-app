@@ -7,21 +7,21 @@ import Login from "../page/auth/Login";
 import Register from "../page/auth/Register";
 import ResetPassword from "../page/auth/ResetPassword";
 
-// const ProtectedRoute = () => {
-//   const { user } = useSelector((state) => state.user);
-//   const location = useLocation();
+const ProtectedRoute = () => {
+  const { user } = useSelector((state) => state.user);
+  const location = useLocation();
 
-//   return user.token ? (
-//     <Outlet />
-//   ) : (
-//     <Navigate to="login" state={{ from: location }} replace />
-//   );
-// };
+  return user.token ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" state={{ from: location }} replace />
+  );
+};
 
 const AppRouter = () => {
   return (
     <>
-      <Routes>
+      <Routes element={<ProtectedRoute />}>
         <Route path="/" element={<Homepage />} />
         <Route path="/profile/:id" element={<Profile />} />
 

@@ -1,0 +1,25 @@
+@import "../index.css";
+
+.post-create {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--white);
+}
+
+.post-create img {
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+}
+
+.post-create input {
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  padding: 16px;
+  width: 560px;
+}

@@ -6,7 +6,7 @@ const {
   passwordController,
   userController,
   friendController,
-} = require("../controllers/user-controller");
+} = require("../controllers/user.controller");
 
 //verify email
 router.get("/verify/:userId/:token", emailController.verifyEmail);

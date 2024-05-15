@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const { hashToken } = require("./handleToken");
 const { v4: createUUID } = require("uuid");
-const ResetPassword = require("../models/resetPassword-model");
+const ResetPassword = require("../models/resetPassword.model");
 
 // config env
 dotenv.config();
@@ -25,8 +25,8 @@ const hashPassword = async (password) => {
 };
 
 //handle compare password
-const comparePassword = async (userPassword, password) => {
-  const isMatch = await bcrypt.compare(userPassword, password);
+const comparePassword = async (userPassword, passwordRecord) => {
+  const isMatch = await bcrypt.compare(userPassword, passwordRecord);
   return isMatch;
 };
 

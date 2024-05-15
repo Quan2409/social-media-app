@@ -24,14 +24,19 @@
 
 .register__form .form__username input {
   padding: 10px;
-  width: 200px;
+  width: 195px;
 }
 
 .register__form .form__auth input {
   display: block;
-  margin: 12px auto;
+  margin: 10px auto;
   padding: 10px;
-  width: 410px;
+  width: 400px;
+}
+
+.register__form .form__auth div {
+  margin: 0 auto;
+  width: 400px;
 }
 
 .register__form button {
@@ -47,5 +52,21 @@
 .register__actions {
   display: block;
   margin-top: 20px;
+  text-align: center;
+}
+
+.register-form__error {
+  display: block;
+  color: red;
+  font-size: 0.7rem;
+}
+
+.register-form__success,
+.server__error {
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+  color: green;
+  font-size: 0.7rem;
   text-align: center;
 }

@@ -1,6 +1,6 @@
-const Post = require("../models/post-model");
-const Users = require("../models/user-model");
-const Comments = require("../models/comment-model");
+const Post = require("../models/post.model");
+const User = require("../models/user.model");
+const Comments = require("../models/comment.model");
 const {
   toggleLikePost,
   toggleLikeComment,
@@ -42,7 +42,7 @@ const postController = {
       const { search } = req.body;
 
       //fetch user information
-      const userInfo = await Users.findById(userId);
+      const userInfo = await User.findById(userId);
 
       // get friends list and add current user ID to it
       const friends = (userInfo?.friends?.toString().split("") ?? []).concat(

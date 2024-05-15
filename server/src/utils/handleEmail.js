@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
-const Verification = require("../models/emailVerification-model");
+const Verification = require("../models/emailVerification.model");
 const { v4: createUUID } = require("uuid");
 const { hashToken } = require("./handleToken");
 

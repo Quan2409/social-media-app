@@ -28,10 +28,35 @@
   width: 400px;
 }
 
+.login-form__email-ip,
+.login-form__password-ip {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 400px;
+}
+
 .login-form button {
+  text-transform: uppercase;
   cursor: pointer;
   color: var(--white);
   background-color: var(--black);
+}
+
+.login-form__error {
+  display: block;
+  width: 200px;
+  color: red;
+  font-size: 0.8rem;
+}
+
+.server-error {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+  color: red;
+  font-size: 0.8rem;
 }
 
 .login-actions {

@@ -1,4 +1,4 @@
-const Users = require("../models/user.model.js");
+const User = require("../models/user.model.js");
 const { sendVerificationEmail } = require("../utils/handleEmail.js");
 const { hashPassword, comparePassword } = require("../utils/handlePassword.js");
 const { createJWT } = require("../utils/handleToken.js");
@@ -15,7 +15,7 @@ const authController = {
     }
 
     try {
-      const existingUser = await Users.findOne({ email });
+      const existingUser = await User.findOne({ email });
       if (existingUser) {
         next("Email already exist");
         return;
@@ -24,7 +24,7 @@ const authController = {
       const hashedPassword = await hashPassword(password);
 
       // create user
-      const newUser = await Users.create({
+      const newUser = await User.create({
         firstName,
         lastName,
         email,
@@ -34,7 +34,7 @@ const authController = {
       sendVerificationEmail(newUser, res);
     } catch (error) {
       if (error.name === "validationError") {
-        res.status(400).json({ success: false, message: error.message });
+        res.status(400).json({ status: false, message: error.message });
       } else {
         console.log(error);
         res.status(404).json({ message: error.message });
@@ -53,7 +53,7 @@ const authController = {
       }
 
       //find user by email, including friend information
-      const userInfo = await Users.findOne({ email })
+      const userInfo = await User.findOne({ email })
         .select("+password")
         .populate({
           path: "friends",
@@ -71,7 +71,7 @@ const authController = {
       }
 
       //compare password
-      const isMatch = await comparePassword(userInfo?.password, password);
+      const isMatch = await comparePassword(password, userInfo?.password);
       if (!isMatch) {
         next("Wrong Password");
         return;
@@ -79,22 +79,21 @@ const authController = {
 
       // remove password field from user object if valid
       userInfo.password = undefined;
-
       const token = createJWT(userInfo?._id);
 
       // send successful login response
       res.status(201).json({
-        success: true,
+        status: true,
         message: "Login Success",
         userInfo,
         token: token,
       });
     } catch (error) {
       if (error.name === "validationError") {
-        res.status(400).json({ success: false, message: error.message });
+        res.status(400).json({ status: false, message: error.message });
       } else {
         console.log(error);
-        res.status(404).json({ message: error.message });
+        res.status(404).json({ status: false, message: error.message });
       }
     }
   },

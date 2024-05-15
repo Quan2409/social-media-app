@@ -5,12 +5,12 @@ const requestSchema = new Schema(
   {
     receiver: {
       type: Schema.Types.ObjectID,
-      ref: "Users",
+      ref: "User",
     },
 
     requestFrom: {
       type: Schema.Types.ObjectId,
-      ref: "Users",
+      ref: "User",
     },
 
     requestStatus: {
